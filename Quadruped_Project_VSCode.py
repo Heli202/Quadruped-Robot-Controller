@@ -138,14 +138,17 @@ class SerialCommunicator:
         except serial.SerialException:
             print("Couldn't find COM port")
             
-    def send_command(self, value_list): # Need to figure out how to send specific / logic
+    def send_command(self, value_list):
         """Send a command to the Pico."""
-        try:
-            command = bytes(f"{value_list}", encoding= "utf-8") 
-            self.s.write(command)
-            print(f"Command sent: {command.strip()}")
-        except AttributeError:
-            print("The COM port was already occupied")
+        self.s.write(1)
+        print("command sent 1")
+        # try:
+        #     command = str(value_list).strip("[]")
+        #     commandbytes = bytes(f"{command}", encoding= "utf-8") 
+        #     self.s.write(commandbytes)
+        #     print(f"Command sent: {commandbytes.strip()}")
+        # except AttributeError:
+        #     print("The COM port was already occupied")
 
     def receive_data(self):
         """Receive data from the Pico."""

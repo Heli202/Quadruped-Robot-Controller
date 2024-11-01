@@ -4,7 +4,7 @@ from tkinter import messagebox
 import json
 import serial
 
-# Have to figure out how to send and receive specific commands for serial
+# Just need to figure out how to send from micropython to the pc
 class Servo:
     """Represents a servo motor in the GUI."""
     
@@ -135,20 +135,19 @@ class SerialCommunicator:
         """Initialize the serial connection."""
         try:
             self.s = serial.Serial(port, baud_rate)
+            print(f"Connected to {port} at {baud_rate} baud")
         except serial.SerialException:
             print("Couldn't find COM port")
             
     def send_command(self, value_list):
         """Send a command to the Pico."""
-        self.s.write(1)
-        print("command sent 1")
-        # try:
-        #     command = str(value_list).strip("[]")
-        #     commandbytes = bytes(f"{command}", encoding= "utf-8") 
-        #     self.s.write(commandbytes)
-        #     print(f"Command sent: {commandbytes.strip()}")
-        # except AttributeError:
-        #     print("The COM port was already occupied")
+        try:
+            command = ",".join(map(str, value_list))
+            commandbytes = bytes(f"{command}\n", encoding= "utf-8") 
+            self.s.write(commandbytes)
+            print(f"Command sent: {commandbytes}")
+        except AttributeError:
+            print("The COM port was already occupied")
 
     def receive_data(self):
         """Receive data from the Pico."""
@@ -157,6 +156,7 @@ class SerialCommunicator:
                 message = self.s.readline().decode("utf-8").strip()
                 return message
             return None
+
 
 class QuadrupedGUI:
     """Main GUI class for controlling the quadruped robot."""

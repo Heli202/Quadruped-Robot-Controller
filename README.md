@@ -4,16 +4,18 @@ A Python-based quadruped robot control system with a GUI Interface to control po
 
 ### Important Notes:
 This has only been tested with:
-- Visual Studio Code for the GUI, with Python (tkinter).
-- Thonny for micropython.
-**Required hardware** A Quadruped robot with 4 legs and 2 servos per leg is required to use this controller.
+- **Visual Studio Code** for the GUI, with Python (tkinter).
+- **Thonny** for micropython.
+- **Raspberry Pi** Pico W microcontroller (requires Wi-Fi capability)
+
+**Required hardware:** A quadruped robot with four legs, each with two servos, is required to use this controller.
 
 ## Table of Contents
 - [Project Title and Description](#project-title-and-description)
 - [Installation and Setup Instructions](#installation-and-setup-instructions)
 - [Usage Instructions](#usage-instructions)
 - [Licenses](#licenses)
-- [External Libraries](#external-libraries)
+- [Libraries](#libraries)
 
 ## Project Title and Description
 This project is designed to control a quadruped robot using a set of servos. It includes:
@@ -24,22 +26,22 @@ This project is designed to control a quadruped robot using a set of servos. It 
 ## Installation and Setup Instructions
 1. Clone this repository:
 ```bash
-git clone https://github.com/Heli202/Quadruped-RobotController.git
+git clone https://github.com/Heli202/Quadruped-RobotController
 ```
-2. Install/Setup Dependences:
+2. Install/Setup Dependencies:
 - Ensure Python is installed on your system.
-- Tkinter should be installed with Python, if not it will need to be installed seperately.
-- Thonny: Install the required dependencies listed in `thonny_requirements.txt`:
+- Tkinter should be installed by default with Python, if not it will need to be installed separately.
+- Thonny: Install the required dependencies (`pyserial` & `webrepl`) listed in `thonny_requirements.txt`:
 ```bash
 pip install -r thonny_requirements.txt
 ```
-- VSCode: Install the require dependencies listen in `vscode_requirements.txt`:
+- VSCode: Install the required dependencies (`pyserial`) listed in `vscode_requirements.txt`:
 ```bash
 pip install -r vscode_requirements.txt
 ```
 3. Setup microcontroller environment:
-- Connect the microcontroller to you PC via USB.
-- Open Thonny, then go to **Tools > Options > Interpreter** and select the appropriate COM port for your microcontroller. You can check the assigned COM port in the **Device Manager** (on Windows).
+- Connect the microcontroller to your PC via USB.
+- Open Thonny, then go to **Tools > Options > Interpreter** and select the appropriate COM port for your microcontroller from the list (you can check the assigned COM port in the **Device Manager** on Windows).
 - Flash micropython onto the microcontroller if it's not already installed.
 - In Thonny, at the `>>>` prompt, type:
   ```bash
@@ -54,7 +56,7 @@ pip install -r vscode_requirements.txt
 - In Thonny, open the `secrets.py` and set the SSID and Password variables to the details of the desired Wi-Fi network.
 
 6. Start WebREPL:
-- Press **Stop/Restart backend** (Ctrl + F2) in Thonny to run boot.py, connecting the micronctroller to Wi-Fi and starting WebREPL. Note the IP address displayed.
+- Press **Stop/Restart backend** (Ctrl + F2) in Thonny to run boot.py, connecting the microcontroller to Wi-Fi and starting WebREPL. Note the IP address displayed.
 
 7. Connect Thonny to WebREPL:
 - In Thonny, go to **Configure Interpreter**, switch from the COM connection to WebREPL, and enter the IP address and password from the setup. Afterwards you may need to **Stop/Restart backend** again for Thonny to switch over.
@@ -71,7 +73,7 @@ pip install -r vscode_requirements.txt
 ### State Control
 - `Save State` and `Load State` buttons allow you to save and load configurations, with entry fields for naming each state.
 ### Command Control
-- `Send to Pico` sends a command to the Pico, moving it to the current Scale values.
+- `Send to Pico` sends a command to the Pico, moving it to the current Scale values for the servos.
 
 ### Demo Video (showcasing functionality):
 ![Demo Video](https://img.youtube.com/vi/hOMUS9vagQ8/0.jpg)
@@ -81,10 +83,15 @@ pip install -r vscode_requirements.txt
 ## Licenses
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## External Libraries
+## Libraries
+
+### External Libraries
 This project uses the following external libraries:
-- **Tkinter** - used for GUI development (Standard Library in Python, governed by Python's PSF License).
 - **PySerial** - Check their [Repository](https://github.com/pyserial/pyserial) for more info.
   - License: [PSF License](https://opensource.org/license/python-2-0)
 - **WebREPL** - Check their [Repository](https://github.com/micropython/webrepl) for more info.
   - License: [MIT License](https://opensource.org/licenses/MIT)
+
+### Standard Libraries
+- **Tkinter** - used for GUI development (Standard Library in Python, governed by Python's PSF License).
+- **sys** - for interacting with the Python runtime environment (Standard Library in Python, governed by Python's PSF License).

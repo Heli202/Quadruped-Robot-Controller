@@ -73,7 +73,7 @@ pip install -r vscode_requirements.txt
 ### Command Control
 - `Send to Pico` sends a command to the Pico, moving it to the current Scale values.
 
-### Below is a demo video showcasing functionality:
+### Demo Video (showcasing functionality):
 ![Demo Video](https://img.youtube.com/vi/hOMUS9vagQ8/0.jpg)
 
 [Watch the video](https://youtu.be/hOMUS9vagQ8)
@@ -83,6 +83,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## External Libraries
 This project uses the following external libraries:
-- **tkinter** - used for GUI development (Standard Library in Python).
-- **pyserial** - [License here](https://pythonhosted.org/pyserial/license.html)
-- **webrepl** - [License information here](https://github.com/micropython/webrepl) 
+- **Tkinter** - used for GUI development (Standard Library in Python, governed by Python's PSF License).
+- **PySerial** - Check their [Repository](https://github.com/pyserial/pyserial) for more info.
+  - License: [PSF License](https://opensource.org/license/python-2-0)
+- **WebREPL** - Check their [Repository](https://github.com/micropython/webrepl) for more info.
+  - License: [MIT License](https://opensource.org/licenses/MIT)

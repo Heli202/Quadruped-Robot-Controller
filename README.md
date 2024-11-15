@@ -26,10 +26,10 @@ This project is designed to control a quadruped robot using a set of servos. It 
 ## Installation and Setup Instructions
 1. Clone this repository:
 ```bash
-git clone https://github.com/Heli202/Quadruped-RobotController
+git clone https://github.com/Heli202/Quadruped-Robot-Controller
 ```
 2. Install/Setup Dependencies:
-- Ensure Python is installed on your system.
+- Ensure Python and MicroPython is installed on your system.
 - Tkinter should be installed by default with Python, if not it will need to be installed separately.
 - Install the required dependencies (`pyserial`) listed in `requirements.txt` for both VSCode and Thonny.
 ```bash
@@ -38,11 +38,11 @@ pip install -r requirements.txt
 
 3. Setup microcontroller environment:
 - Connect the microcontroller to your PC via USB.
-- Open Thonny, then go to **Tools > Options > Interpreter** and select the appropriate COM port for your microcontroller from the list (you can check the assigned COM port in the **Device Manager** on Windows).
+- Open Thonny, then go to **Tools > Options > Interpreter** and select MicroPython (Raspberry Pi Pico) for the interpreter. Then select the appropriate COM port for your microcontroller from the list (you can check the assigned COM port in the **Device Manager** on Windows).
 - Flash MicroPython onto the microcontroller if it's not already installed.
 
 4. Transfer necessary files to the microcontroller in Thonny:
-- Upload the `Quadruped_Thonny.py` file onto the microcontroller's filesystem. This file contains the main program logic for receiving commands from the 
+- Upload the `Quadruped_Thonny.py` file onto the microcontroller's filesystem. This file contains the main program logic for receiving commands from the GUI.
 
 5. Using Thonny to start the microcontroller main loop:
 - To start the main loop, after the `>>>` type:
@@ -54,10 +54,9 @@ import Quadruped_Thonny
 Quadruped_Thonny.start()
 ```
 - `Starting main loop...` will now appear.
-
+- Now close Thonny, while keeping the microcontroller plugged in.
 6. Open the GUI:
 - Open `Quadruped_PC` to launch the GUI.
-
 ## Usage Instructions
 - From the GUI you now have the following controls:
 ### Scale Controls
